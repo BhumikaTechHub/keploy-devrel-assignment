@@ -1,0 +1,229 @@
+@import "tailwindcss";
+
+:root {
+  --background: #070b14;
+  --foreground: #f8fafc;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Documentation */
+
+.doc-content {
+  color: #a8b3c5;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.doc-content h1 {
+  display: none;
+}
+
+.doc-content h2 {
+  scroll-margin-top: 90px;
+  margin-top: 4rem;
+  margin-bottom: 1.25rem;
+  color: #f8fafc;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.doc-content h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: #e2e8f0;
+  font-size: 1.2rem;
+  font-weight: 650;
+}
+
+.doc-content p {
+  margin: 1rem 0;
+}
+
+.doc-content strong {
+  color: #f1f5f9;
+}
+
+.doc-content a {
+  color: #34d399;
+}
+
+.doc-content ul,
+.doc-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.doc-content li {
+  margin: 0.35rem 0;
+}
+
+.doc-content blockquote {
+  margin: 1.5rem 0;
+  border-left: 3px solid #34d399;
+  border-radius: 0 0.75rem 0.75rem 0;
+  background: rgba(52, 211, 153, 0.06);
+  padding: 1rem 1.25rem;
+  color: #cbd5e1;
+}
+
+.doc-content pre {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 0.85rem;
+  background: #0d1320;
+  padding: 1.15rem 1.25rem;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.18);
+}
+
+.doc-content pre code {
+  color: #dbeafe;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.doc-content :not(pre) > code {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.35rem;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.15rem 0.4rem;
+  color: #6ee7b7;
+  font-size: 0.9em;
+}
+
+.doc-content hr {
+  margin: 3rem 0;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.doc-content table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+}
+
+.doc-content th,
+.doc-content td {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.7rem 0.9rem;
+  text-align: left;
+}
+
+.doc-content th {
+  background: rgba(255, 255, 255, 0.05);
+  color: #f8fafc;
+}
+
+::selection {
+  background: rgba(52, 211, 153, 0.3);
+}
+
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+[id] {
+  scroll-margin-top: 100px;
+}
+
+
+
+/* Documentation sidebar */
+
+.docs-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 48px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.sidebar {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+  height: fit-content;
+  padding: 20px 0;
+}
+
+.sidebar-title {
+  margin-bottom: 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #737373;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar nav a {
+  display: block;
+  padding: 8px 12px;
+  border-left: 2px solid transparent;
+  color: #8b8b8b;
+  font-size: 13px;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.sidebar nav a:hover {
+  color: #ffffff;
+  border-left-color: #737373;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.sidebar nav a:active {
+  color: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .docs-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .sidebar {
+    position: relative;
+    top: 0;
+    order: -1;
+    padding-bottom: 8px;
+  }
+
+  .sidebar nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar nav {
+    grid-template-columns: 1fr;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.prose h2 {
+  scroll-margin-top: 100px;
+}

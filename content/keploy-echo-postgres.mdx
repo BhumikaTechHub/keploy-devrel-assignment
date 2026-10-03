@@ -1,0 +1,61 @@
+# Keploy + Echo + PostgreSQL
+
+A hands-on guide to testing an Echo + PostgreSQL URL shortener with Keploy.
+
+---
+
+## What Keploy is doing
+
+Keploy captures real API interactions and turns them into reusable test cases. Instead of manually writing every API test, I interacted with the working application and allowed Keploy to capture that behavior. The captured interactions can later be replayed to verify the application.
+
+## Local setup
+
+I ran the Echo + PostgreSQL sample inside Ubuntu. The main tools were Go, Docker, PostgreSQL, Keploy, Git, and curl.
+
+Keploy was version 3.8.58. The Echo application used port 8082 and PostgreSQL used port 5432.
+
+## Prepare the sample
+
+The selected quickstart is an Echo + PostgreSQL URL shortener. I configured PostgreSQL with localhost:5432 and verified that the application could connect successfully.
+
+The application reported: Ping successful, Table creation check passed, and Database connection established successfully.
+
+## Record API traffic
+
+I used Keploy to record real API traffic. I sent a POST request to /url with the URL https://google.com and then made a GET request using the generated short URL.
+
+Keploy captured these interactions and generated test cases including post-url-1 and get-lhr4bwai-1.
+
+## What Keploy captured
+
+The newly recorded interactions were stored in test-set-2. The captured behavior represented the POST request for creating a shortened URL and the GET request for retrieving the original URL.
+
+This was useful because the test cases were created from real application behavior rather than being written manually from scratch.
+
+## Replay the tests
+
+My first keploy test command selected an older test set and produced a PostgreSQL mock error. I then explicitly selected test-set-2.
+
+The successful command was: sudo -E PATH=$PATH keploy test -c "./echo-psql-url-shortener" -t "test-set-2".
+
+The final result was Total tests: 3, Total test passed: 3, Total test failed: 0. Keploy reported phase: verified_green.
+
+## Troubleshooting
+
+I encountered a port conflict when the application was already running on port 8082 while Keploy was also trying to start it. I stopped the manually running application and allowed Keploy to manage the process.
+
+I also learned that the correct test set must be selected. Running the default test command used an older test set, so I explicitly selected test-set-2.
+
+## What I learned
+
+The biggest lesson was that Keploy can turn real application usage into reusable automated tests.
+
+The workflow became: use the application, record the interaction, generate test cases, replay the tests, and verify the result. I also learned that application processes, database connectivity, ports, and test-set selection all matter when debugging the workflow.
+
+## Complete workflow
+
+The complete workflow was: install and verify Go, install Docker and Keploy, start PostgreSQL, prepare the Echo application, verify database connectivity, record API traffic, generate test cases, select the correct test set, replay the tests, and verify the results.
+
+The successful replay produced 3 total tests, with 3 passed and 0 failed.
+
+The main takeaway is: Record real API behavior → generate test cases → replay the tests → verify the result.
